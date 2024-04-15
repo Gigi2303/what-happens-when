@@ -287,6 +287,24 @@ Switch:
     Target MAC: interface:mac:address:here
     Target IP: interface.ip.goes.here
 
+Dynamic ARP Inspection (DAI) on Switches:
+In enterprise networks, particularly those with sensitive data or strict
+security requirements, switches may implement a feature called Dynamic ARP
+Inspection (DAI). DAI is a security feature that validates ARP packets before
+forwarding them. It helps prevent ARP spoofing attacks by comparing the ARP
+packets against a trusted database of MAC-to-IP address bindings.
+
+When DAI is enabled, the switch dynamically builds a table associating IP
+addresses with MAC addresses by inspecting ARP packets passing through. When
+an ARP request is received, the switch verifies that the sender's IP-to-MAC
+mapping matches the information stored in its ARP inspection table. If the
+information is consistent, the ARP request is allowed to pass through. However,
+if the information doesn't match or if the ARP packet is deemed malicious, the
+switch can take action, such as dropping the packet or logging the event.
+
+DAI adds an additional layer of security to the ARP process, helping to mitigate
+various ARP-based attacks and enhancing network security posture.
+
 Now that the network library has the IP address of either our DNS server or
 the default gateway it can resume its DNS process:
 
